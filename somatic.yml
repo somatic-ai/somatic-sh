@@ -1,0 +1,23 @@
+source:
+  host: localhost
+  port: 5432
+  database: somatic_test
+  user: postgres
+  password: postgres
+
+watch:
+  table: documents
+  columns:
+    - title
+    - content
+  primary_key: id
+  updated_at_column: updated_at
+
+embeddings:
+  provider: openai
+  model: text-embedding-3-small
+  template: "{columns}"
+
+storage:
+  qdrant_path: .qdrant
+  collection_name: documents
